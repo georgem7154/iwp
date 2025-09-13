@@ -1,27 +1,27 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Client-side validation to ensure all fields are filled
     if (!username || !email || !password) {
-        setError('Please enter all fields');
-        return;
+      setError("Please enter all fields");
+      return;
     }
 
     try {
-      const response = await fetch('http://localhost:3000/auth/register', {
-        method: 'POST',
+      const response = await fetch("/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, email, password }),
       });
@@ -29,15 +29,15 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('User registered successfully:', data);
+        console.log("User registered successfully:", data);
         // Redirect to dashboard on successful registration
-        window.location.href = '/dashboard';
+        window.location.href = "/dashboard";
       } else {
         // Display error message from the backend
-        setError(data.msg || 'Registration failed');
+        setError(data.msg || "Registration failed");
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError("An error occurred. Please try again.");
     }
   };
 
@@ -236,13 +236,15 @@ const Register = () => {
           </div>
           {error && <p className="error-message">{error}</p>}
 
-          
-          <button type="submit" className="login-button">Register</button>
-          
+          <button type="submit" className="login-button">
+            Register
+          </button>
         </form>
 
         <div className="login-footer">
-          <p>Already have an account? <Link to="/">Log in</Link></p>
+          <p>
+            Already have an account? <Link to="/">Log in</Link>
+          </p>
         </div>
       </div>
     </div>
