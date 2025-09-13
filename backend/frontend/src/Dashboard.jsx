@@ -107,13 +107,38 @@ const Dashboard = () => {
           box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
         }
 
+        /* Team Members Box */
+        .team-members {
+          background-color: #f7f7f7;
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          padding: 1rem;
+          margin: auto 1.5rem 0;
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .team-members h4 {
+          font-size: 1vw;
+          font-weight: 600;
+          color: #007bff;
+          margin: 0 0 0.5rem 0;
+          min-height: 14px;
+        }
+        .team-members ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .team-members li {
+          font-size: 0.9vw;
+          color: #555;
+          line-height: 1.5;
+        }
+
         /* Main Content Area */
         .main-content {
           flex: 1;
           padding: 2rem;
           overflow-y: auto;
-          /* The width is handled by flexbox, which is more robust */
-          /* Using width: 100vw here would break the layout */
         }
 
         .main-title {
@@ -222,6 +247,18 @@ const Dashboard = () => {
           .main-title {
             font-size: 6vw;
           }
+          
+          .team-members {
+            margin: 1.5rem;
+          }
+          
+          .team-members h4 {
+            font-size: 3.5vw;
+          }
+          
+          .team-members li {
+            font-size: 3vw;
+          }
         }
       `}</style>
 
@@ -245,6 +282,16 @@ const Dashboard = () => {
               <Link to="/analytics" className="sidebar-link">Analytics</Link>
               <Link to="/landing" className="sidebar-link">Landing Page</Link>
             </nav>
+            {/* Team Members Box */}
+            <div className="team-members">
+              <h4>Team Members:</h4>
+              <ul>
+                <li>George</li>
+                <li>Riya</li>
+                <li>Keren</li>
+                <li>Yeshi</li>
+              </ul>
+            </div>
           </aside>
 
           {/* Main Content */}
