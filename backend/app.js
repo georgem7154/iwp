@@ -27,8 +27,10 @@ app.use(express.static(path.join(__dirname, 'client', 'dist')));
 app.use('/auth', authRouter);
 
 // Catch-all route for SPA (React/Vite/Angular)
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
 // Start server
